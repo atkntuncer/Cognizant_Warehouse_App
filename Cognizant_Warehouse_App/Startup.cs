@@ -1,3 +1,5 @@
+using Cognizant_Warehouse_App.Business;
+using Cognizant_Warehouse_App.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -23,6 +25,12 @@ namespace Cognizant_Warehouse_App
 
         public IConfiguration Configuration { get; }
 
+        public Startup(IHostEnvironment env)
+        {
+            var builder = new ConfigurationBuilder().SetBasePath(env.ContentRootPath).AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+            Configuration = builder.Build();
+        }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -32,6 +40,8 @@ namespace Cognizant_Warehouse_App
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Cognizant_Warehouse_App", Version = "v1" });
             });
+            services.AddScoped<IBaseRepository, BaseRepository>();
+            services.AddScoped<IDbService, DbService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -42,11 +42,13 @@ namespace Cognizant_Warehouse_App
             });
             services.AddScoped<IBaseRepository, BaseRepository>();
             services.AddScoped<IDbService, DbService>();
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+           
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -54,9 +56,13 @@ namespace Cognizant_Warehouse_App
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cognizant_Warehouse_App v1"));
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors(options =>
+            {
+                options.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
+            });
 
             app.UseAuthorization();
 

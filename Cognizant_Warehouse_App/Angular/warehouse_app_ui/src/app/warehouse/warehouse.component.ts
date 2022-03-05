@@ -1,6 +1,7 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Warehouse } from '../shared/warehouse.model';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { IWarehouse } from '../shared/warehouse.model';
 import { WarehouseService } from '../shared/warehouse.service';
+import { BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-warehouse',
@@ -9,9 +10,11 @@ import { WarehouseService } from '../shared/warehouse.service';
 })
 export class WarehouseComponent implements OnInit {
 
-  constructor(private service:WarehouseService) { }
-  @ViewChild('modal',{static:true})modal:ElementRef;
-  vehicleList:Warehouse[];
+  constructor(private service:WarehouseService ) { }
+  @ViewChild('modal')modal:TemplateRef<Object>;
+  vehicleList:IWarehouse[];
+  vehicle:IWarehouse;
+  ActivateComponent:boolean=false;
 
   ngOnInit(): void {
    this.service.getVehicleList().subscribe(result=>{
@@ -19,7 +22,12 @@ export class WarehouseComponent implements OnInit {
    });
   }
 
-  vehicleDetail(){
-this.modal.nativeElement='modal fade show'
+  vehicleDetail(vehicle:IWarehouse){
+    this.vehicle=vehicle
+    this.ActivateComponent=true;
+  }
+
+  closeClick(){
+this.ActivateComponent=false;
   }
 }

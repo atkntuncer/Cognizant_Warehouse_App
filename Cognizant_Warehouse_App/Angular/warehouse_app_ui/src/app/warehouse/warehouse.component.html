@@ -1,23 +1,18 @@
   
-  <button type="button" class="btn btn-primary" (click)="vehicleDetail()">
-    Launch demo modal
-  </button>
+
+
   <!-- Modal -->
   <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" #modal>
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Vehicle Detail</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeClick()">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <app-vehicle-detail [vehicle]="vehicle" *ngIf="ActivateComponent"></app-vehicle-detail>
         </div>
       </div>
     </div>
@@ -33,13 +28,20 @@
            <th>Brand</th> 
            <th>Model</th>
            <th>Price</th> 
+           <th>Year</th> 
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let vehicle of vehicleList" (click)="vehicleDetail()">
+        <tr *ngFor="let vehicle of vehicleList">
             <td>{{vehicle.make}}</td>
             <td>{{vehicle.model}}</td>
             <td>{{vehicle.price}}</td>
+            <td>{{vehicle.year_Model}}</td>
+            <td>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal" (click)="vehicleDetail(vehicle)" [hidden]="vehicle.licensed==0">
+                Details
+                  </button>
+            </td>
         </tr>
     </tbody>
 </table>

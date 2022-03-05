@@ -1,4 +1,4 @@
-export interface Warehouse {
+export interface IWarehouse {
     id:number;
     warehouseName:string; 
     location :string;

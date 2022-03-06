@@ -33,6 +33,7 @@ cartList:IWarehouse[];
       result.forEach(element => {
         this.totalPrice+=element.price;
       });
+      this.totalPrice=+(Math.round(this.totalPrice * 100) / 100).toFixed(2);
     });
   }
 

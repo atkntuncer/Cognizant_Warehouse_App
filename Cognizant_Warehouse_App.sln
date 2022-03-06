@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cognizant_Warehouse_App", "Cognizant_Warehouse_App\Cognizant_Warehouse_App.csproj", "{75B4BBD6-8567-45D0-B005-70F3346ECCFA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cognizant_Warehouse_App", "Cognizant_Warehouse_App\Cognizant_Warehouse_App.csproj", "{75B4BBD6-8567-45D0-B005-70F3346ECCFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cognizant_Warehouse_App_UnitTests", "Cognizant_Warehouse_App_UnitTests\Cognizant_Warehouse_App_UnitTests.csproj", "{09AFD1A0-AA01-47C0-A729-F6CC2A3B7616}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{75B4BBD6-8567-45D0-B005-70F3346ECCFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75B4BBD6-8567-45D0-B005-70F3346ECCFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75B4BBD6-8567-45D0-B005-70F3346ECCFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09AFD1A0-AA01-47C0-A729-F6CC2A3B7616}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09AFD1A0-AA01-47C0-A729-F6CC2A3B7616}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09AFD1A0-AA01-47C0-A729-F6CC2A3B7616}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09AFD1A0-AA01-47C0-A729-F6CC2A3B7616}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Vehicle } from 'src/app/shared/vehicle.model';
 import { IWarehouse } from 'src/app/shared/warehouse.model';
+import { WarehouseService } from 'src/app/shared/warehouse.service';
 import { WarehouseComponent } from '../warehouse.component';
 
 @Component({
@@ -10,7 +11,7 @@ import { WarehouseComponent } from '../warehouse.component';
 })
 export class VehicleDetailComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service:WarehouseService) { }
 
 @Input() vehicle:IWarehouse;
 vehicleDetail:Vehicle=new Vehicle();
@@ -24,6 +25,13 @@ vehicleDetail:Vehicle=new Vehicle();
     this.vehicleDetail.price=this.vehicle.price;
     this.vehicleDetail.warehouseName=this.vehicle.warehouseName;
     this.vehicleDetail.year_Model=this.vehicle.year_Model;
+  }
+  
+  //add vehicle to cart
+  addtoCart(vehicle:IWarehouse){
+    this.service.addtoCart(vehicle).subscribe(result=>{
+      this.service.sendUpdate("Cart updated");
+    });
   }
 
 }

@@ -1,0 +1,9 @@
+.grid-container {
+    display: grid;
+    grid-template-areas: "app-warehouse  app-shopping-cart";
+    grid-template-columns: 3fr 1fr;
+    grid-column-gap: 200px;
+ }
+ 
+  app-warehouse { grid-area: app-warehouse}
+  app-shopping-cart { grid-area: app-shopping-cart}

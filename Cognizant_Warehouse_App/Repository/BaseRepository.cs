@@ -97,14 +97,14 @@ namespace Cognizant_Warehouse_App.Repository
         /// <param name="sqlQuery"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<bool> DeleteAsync(string sqlQuery, int id)
+        public async Task<bool> DeleteAsync<T>(string sqlQuery, T dto)
         {
             int result = -1;
             try
             {
                 using (IDbConnection con = new SQLiteConnection(ConnectionString))
                 {
-                    result = await con.ExecuteAsync(sqlQuery, new { Id = id });
+                    result = await con.ExecuteAsync(sqlQuery, dto);
                 }
             }
             catch (Exception e)

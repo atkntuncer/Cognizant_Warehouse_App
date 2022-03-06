@@ -1,7 +1,7 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { IWarehouse } from '../shared/warehouse.model';
 import { WarehouseService } from '../shared/warehouse.service';
-import { BsModalService } from 'ngx-bootstrap/modal';
+
 
 @Component({
   selector: 'app-warehouse',
@@ -22,12 +22,21 @@ export class WarehouseComponent implements OnInit {
    });
   }
 
+  //get all vehicle detail
   vehicleDetail(vehicle:IWarehouse){
     this.vehicle=vehicle
     this.ActivateComponent=true;
   }
 
+  //close modal
   closeClick(){
 this.ActivateComponent=false;
+  }
+
+  //add vehicle to cart
+  addtoCart(vehicle:IWarehouse){
+    this.service.addtoCart(vehicle).subscribe(result=>{
+      this.service.sendUpdate("Cart updated");
+    });
   }
 }

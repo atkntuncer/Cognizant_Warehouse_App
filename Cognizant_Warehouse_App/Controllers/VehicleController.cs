@@ -18,7 +18,7 @@ namespace Cognizant_Warehouse_App.Controllers
         }
 
         /// <summary>
-        /// An api route that get list of vehicles
+        /// An api route that get list of vehicle
         /// </summary>
         /// <returns></returns>
         [Route("List")]
@@ -27,5 +27,6 @@ namespace Cognizant_Warehouse_App.Controllers
         {
             return await _service.GetVehiclesAsync();
         }
+
     }
 }
